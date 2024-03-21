@@ -1,16 +1,4 @@
 
-
-import subprocess
-
-# Install matplotlib using pip
-subprocess.run(["pip", "install", "matplotlib"])
-subprocess.run(["pip", "install", "numpy"])
-subprocess.run(["pip", "install", "seaborn"])
-subprocess.run(["pip", "install", "Pillow"])
-
-subprocess.run(["pip", "install", "Pandas"])
-
-
 ############### start of imports ################################################################################################
 import pandas as pd 
 import streamlit as st 
