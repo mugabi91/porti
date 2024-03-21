@@ -1,4 +1,5 @@
-
+import subprocess
+subprocess.run(["pip", "install", "matplotlib"])
 ############### start of imports ################################################################################################
 import pandas as pd 
 import streamlit as st 
