@@ -7,6 +7,7 @@ subprocess.run(["pip", "install", "matplotlib"])
 subprocess.run(["pip", "install", "numpy"])
 subprocess.run(["pip", "install", "seaborn"])
 subprocess.run(["pip", "install", "Pillow"])
+
 subprocess.run(["pip", "install", "Pandas"])
 
 
