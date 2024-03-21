@@ -1,4 +1,15 @@
 
+
+import subprocess
+
+# Install matplotlib using pip
+subprocess.run(["pip", "install", "matplotlib"])
+subprocess.run(["pip", "install", "numpy"])
+subprocess.run(["pip", "install", "seaborn"])
+subprocess.run(["pip", "install", "Pillow"])
+subprocess.run(["pip", "install", "Pandas"])
+
+
 ############### start of imports ################################################################################################
 import pandas as pd 
 import streamlit as st 
@@ -12,7 +23,7 @@ import seaborn as sns
 
   
 ##########paths &  data frames ################################################################################
-path =r".\Datasets\star_wars.csv"
+path =r"workspaces\Datasets\star_wars.csv"
 df=pd.read_csv(path)
 ##########  end of paths &  data frames ################################################################################
  
@@ -21,7 +32,7 @@ df=pd.read_csv(path)
 st.set_page_config(layout="wide")
 
 ###################################
-starwars_pic =r".\images\vader.jpg"
+starwars_pic =r"workspaces\images\vader.jpg"
 
 ############################## end of background styling #############################################
 ##########general functions#########################
@@ -70,7 +81,7 @@ if page == "Home":
     st.dataframe(df, use_container_width=True)
     st.write_stream(stream_data(f"Dataset holds {df.shape[0]} rows and {df.shape[1]} columns"))
     st.write_stream(stream_data("#### The dataset also holds data on star trek:"))
-    startrek_pic =r".\images\startrek.jpg"
+    startrek_pic =r"workspaces\images\startrek.jpg"
     startrek_bio = """The Star Trek franchise is a beloved and iconic science fiction universe that has captivated audiences worldwide for decades. It originated as a television series created by Gene Roddenberry in the 1960s and has since expanded into a vast multimedia phenomenon including TV shows, movies, books, games, and more.
 
 At its core, Star Trek is known for its optimistic vision of the future, exploring themes of exploration, diversity, cooperation, and the quest for knowledge. Set in the distant future, it follows the adventures of Starfleet, a space-exploration organization representing the United Federation of Planets. The franchise features a diverse cast of characters from different species and backgrounds, working together aboard starships like the iconic USS Enterprise to discover new worlds, encounter alien civilizations, and tackle moral and ethical dilemmas.
