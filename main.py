@@ -1,9 +1,16 @@
 import subprocess
 import sys
 
-# Function to install a package using pip
+# Function to install a package using pip with the --user flag
 def install_package(package_name):
-    subprocess.run([sys.executable, "-m", "pip", "install", package_name])
+    subprocess.run([sys.executable, "-m", "pip", "install", "--user", package_name])
+
+# Upgrade pip
+try:
+    subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "pip"])
+except Exception as e:
+    print(f"Error upgrading pip: {e}")
+    sys.exit(1)
 
 # Attempt to import matplotlib
 try:
