@@ -259,26 +259,26 @@ Looking at the male fan base of all the franchises, starwars has the highest mal
     
     # Bar plot for fans location
     fig_a = px.bar(counts_sorted, x='Location', y='count', title='Fans Location')
-    fig_a.update_layout(title_text="Fans Location")
+    fig_a.update_layout(title_text="Fans Location",width=1000, height=500)
     fig_a.show()
     st.plotly_chart(fig_a)
     
     # Count plot for Star Wars fans location
     fig_b = px.bar(df, x='Location', color='starwars_fan', title='Star Wars Fans Location')
-    fig_b.update_layout(title_text="Star Wars Fans Location")
+    fig_b.update_layout(title_text="Star Wars Fans Location",width=1000, height=500)
     fig_b.show()
     st.plotly_chart(fig_b)
     
     # Count plot for Star Trek fans location
     fig_c = px.bar(df, x='Location', color='star_trek_fan', title='Star Trek Fans Location')
-    fig_c.update_layout(title_text="Star Trek Fans Location")
+    fig_c.update_layout(title_text="Star Trek Fans Location",width=1000, height=500)
     fig_c.show()
     st.plotly_chart(fig_c)
     
     
     # Count plot for Expanded Universe fans location
     fig_d= px.bar(df, x='Location', color='Expanded_universe_fan', title='Expanded Universe Fans Location')
-    fig_d.update_layout(title_text="Expanded Universe Fans Location")
+    fig_d.update_layout(title_text="Expanded Universe Fans Location",width=1000, height=500)
     fig_d.show()
     st.plotly_chart(fig_d)
     
