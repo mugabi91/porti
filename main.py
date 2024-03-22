@@ -196,32 +196,34 @@ elif page == "EDA":
         df[col] = df[col].astype("category")
         
     df.info()
-    sns.set_theme(style='darkgrid')
-    sns.set_palette('Accent')
-
+   
 
     categories = ['starwars_fan', 'star_trek_fan', 'Expanded_universe_fan']
     titles = ['Number of Star Wars fans', 'Number of Star Trek fans', 'Number of Expanded Universe fans']
+ 
+    fan_Age_count = df.groupby('Age').agg(starwars_fan=('starwars_fan', 'count'), star_trek_fan=('star_trek_fan', 'count'), Expanded_universe_fan=("Expanded_universe_fan","count"),Count=('Location', 'size')).reset_index()
+    
+    
+    
+
+    
+    # Melt the DataFrame to have a single 'Count' column for visualization
+    melted_df = pd.melt(fan_Age_count, id_vars=['Age', 'Count'], var_name='Category', value_name='Value')
+    
+    # Create a bar chart using Plotly Express
+    fig1 = px.bar(melted_df, x='Age', y='Value', color='Category', barmode='group',
+                 hover_data={'Value': ':.0f'}, labels={'Value': 'Count'},
+                 title='Counts by Age and Fan Categories')
+    
+    # Update layout and show the plot
+    fig1.update_layout(xaxis_title='Age', yaxis_title='Count', legend_title='Category')
+    fig1.show()
 
 
 
 
 
-
-   
-    fig1, axes = plt.subplots(3, 3, figsize=(15, 12))
-
-
-    for i, (category, title) in enumerate(zip(categories, titles)):
-        sns.countplot(data=df, x=category, ax=axes[i, 0])
-        axes[i, 0].set_title(title.upper())
-        
-        sns.countplot(data=df, hue=category, x='Gender', ax=axes[i, 1])
-        axes[i, 1].set_title(f'by Gender for {title}'.upper())
-        
-        sns.countplot(data=df, hue=category, x='Age', ax=axes[i, 2])
-        axes[i, 2].set_title(f'by Age for {title}'.upper())
-
+  
     plt.tight_layout()
     st.pyplot(fig1)
     
