@@ -1,4 +1,23 @@
+import subprocess
+import sys
 
+# Function to install a package using pip
+def install_package(package_name):
+    subprocess.run([sys.executable, "-m", "pip", "install", package_name])
+
+# Attempt to import matplotlib
+try:
+    import matplotlib.pyplot as plt
+    print("Matplotlib already installed.")
+except ImportError:
+    print("Matplotlib not found. Trying to install...")
+    try:
+        install_package("matplotlib")
+        import matplotlib.pyplot as plt
+        print("Matplotlib installed successfully.")
+    except Exception as e:
+        print(f"Error installing Matplotlib: {e}")
+        sys.exit(1)
 
 ############### start of imports ################################################################################################
 import pandas as pd 
