@@ -311,7 +311,7 @@ Inspect the graphs  above for the rest and more insight on location of fans and 
     def create_histogram_plot(category, x_column, title):
         filtered_df = df.dropna(subset=[category, x_column])  # Drop rows with NaN in the specified category and x_column
         if not filtered_df.empty:
-            fig = px.histogram(filtered_df, x=x_column, color=category, title=title,
+            fig = px.histogram(filtered_df.sort_values(by="Household Income"), x=x_column, color=category, title=title,
                                histfunc='count', barmode='group')
             fig.update_layout(width=1000, height=500, margin=dict(l=20, r=20, t=70, b=20), showlegend=False)
             return fig
