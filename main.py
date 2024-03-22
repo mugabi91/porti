@@ -224,8 +224,8 @@ elif page == "EDA":
 
 
   
-    plt.tight_layout()
-    st.pyplot(fig1)
+
+    st.plotly_chart(fig1)
     
     st.write_stream(stream_data(''' #### INSIGHTS
 As seen above starwars has got the highest number of fans followed by star trek and last the expanded universe
