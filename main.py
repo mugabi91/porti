@@ -247,20 +247,28 @@ Looking at the male fan base of all the franchises, starwars has the highest mal
     st.divider()
     st.divider()
     st.write_stream(stream_data("### Where are most fans from ?"))
+    counts = df.groupby("Location").size().reset_index()
+counts.columns = ["Location", "count"]
+
+# Sort the counts DataFrame by 'count' column in ascending order
+counts_sorted = counts.sort_values(by='count', ascending=False)
+
+
     fig2,ax =plt.subplots(4,1, figsize=(15,15))
-
-    sns.countplot(data=df, x="Location",ax=ax[0])
+    
+    
+    sns.barplot(x='Location', y='count', data=counts_sorted, order=counts_sorted['Location'], ax=ax[0])
     ax[0].set_title("fans location".upper())
-
-    sns.countplot(data=df, x="Location",hue="starwars_fan",ax=ax[1])
+    
+    sns.countplot(data=df, x="Location",hue="starwars_fan",order=counts_sorted['Location'],ax=ax[1])
     ax[1].set_title("starwars fans Location".upper())
-
-    sns.countplot(data=df, x="Location", hue="star_trek_fan",ax=ax[2])
+    
+    sns.countplot(data=df, x="Location", hue="star_trek_fan",order=counts_sorted['Location'],ax=ax[2])
     ax[2].set_title("star trek fans location".upper())
-
-    sns.countplot(data=df, x="Location", hue="Expanded_universe_fan",ax=ax[3])
+    
+    sns.countplot(data=df, x="Location", hue="Expanded_universe_fan",order=counts_sorted['Location'], ax=ax[3])
     ax[3].set_title("Expanded universe fans location".upper())
-
+    
     plt.tight_layout()
     plt.show()
     st.pyplot(fig2)
