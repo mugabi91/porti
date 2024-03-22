@@ -201,12 +201,44 @@ elif page == "EDA":
     categories = ['starwars_fan', 'star_trek_fan', 'Expanded_universe_fan']
     titles = ['Number of Star Wars fans', 'Number of Star Trek fans', 'Number of Expanded Universe fans']
  
+    gender_count = df.groupby('Gender').agg(starwars_fan=('starwars_fan', 'count'), star_trek_fan=('star_trek_fan', 'count'), Expanded_universe_fan=("Expanded_universe_fan","count"),Count=('Location', 'size')).reset_index()
+    gender_count
+    
+    
+    # Melt the DataFrame to have a single 'Count' column for visualization
+    melted_df = pd.melt(gender_count, id_vars=['Gender', 'Count'], var_name='Category', value_name='Value')
+    
+    # Create a grouped bar chart using Plotly Express
+    fi1g = px.bar(melted_df, x='Gender', y='Value', color='Category', barmode='group',
+                 hover_data={'Value': ':.0f'}, labels={'Value': 'Count'},
+                 title='Counts by Gender and Fan Categories')
+    
+    # Update layout and show the plot
+    fi1g.update_layout(xaxis_title='Gender', yaxis_title='Count', legend_title='Category')
+    fi1g.show()
+    st.plotly_chart(fi1g)
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     fan_Age_count = df.groupby('Age').agg(starwars_fan=('starwars_fan', 'count'), star_trek_fan=('star_trek_fan', 'count'), Expanded_universe_fan=("Expanded_universe_fan","count"),Count=('Location', 'size')).reset_index()
     
     
     
-
-    
+ 
     # Melt the DataFrame to have a single 'Count' column for visualization
     melted_df = pd.melt(fan_Age_count, id_vars=['Age', 'Count'], var_name='Category', value_name='Value')
     
