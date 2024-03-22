@@ -7,6 +7,7 @@ import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
 ############### end of import ##############################################################################################
 
 
@@ -247,31 +248,39 @@ Looking at the male fan base of all the franchises, starwars has the highest mal
     st.divider()
     st.divider()
     st.write_stream(stream_data("### Where are most fans from ?"))
-    
+  # Count occurrences of each location
     counts = df.groupby("Location").size().reset_index()
     counts.columns = ["Location", "count"]
-
-# Sort the counts DataFrame by 'count' column in ascending order
+    
+    # Sort the counts DataFrame by 'count' column in ascending order
     counts_sorted = counts.sort_values(by='count', ascending=False)
     
-    fig2,ax =plt.subplots(4,1, figsize=(15,15))
+    # Plotting with Plotly
+    
+    # Bar plot for fans location
+    fig_a = px.bar(counts_sorted, x='Location', y='count', title='Fans Location')
+    fig_a.update_layout(title_text="Fans Location")
+    fig_a.show()
+    st.plotly_chart(fig_a)
+    
+    # Count plot for Star Wars fans location
+    fig_b = px.bar(df, x='Location', color='starwars_fan', title='Star Wars Fans Location')
+    fig_b.update_layout(title_text="Star Wars Fans Location")
+    fig_b.show()
+    st.ploty_chart(fig_b)
+    
+    # Count plot for Star Trek fans location
+    fig_c = px.bar(df, x='Location', color='star_trek_fan', title='Star Trek Fans Location')
+    fig_c.update_layout(title_text="Star Trek Fans Location")
+    fig_c.show()
+    st.plotly_chart(fig_c)
     
     
-    sns.barplot(x='Location', y='count', data=counts_sorted, order=counts_sorted['Location'], ax=ax[0])
-    ax[0].set_title("fans location".upper())
-    
-    sns.countplot(data=df, x="Location",hue="starwars_fan",order=counts_sorted['Location'],ax=ax[1])
-    ax[1].set_title("starwars fans Location".upper())
-    
-    sns.countplot(data=df, x="Location", hue="star_trek_fan",order=counts_sorted['Location'],ax=ax[2])
-    ax[2].set_title("star trek fans location".upper())
-    
-    sns.countplot(data=df, x="Location", hue="Expanded_universe_fan",order=counts_sorted['Location'], ax=ax[3])
-    ax[3].set_title("Expanded universe fans location".upper())
-    
-    plt.tight_layout()
-    plt.show()
-    st.pyplot(fig2)
+    # Count plot for Expanded Universe fans location
+    fig_d= px.bar(df, x='Location', color='Expanded_universe_fan', title='Expanded Universe Fans Location')
+    fig_d.update_layout(title_text="Expanded Universe Fans Location")
+    fig_d.show()
+    st.plotly_chart(fig_d)
     
     st.write_stream(stream_data("""#### INSIGHTS
 Most fans are from the East North Central followed by the pacific and then the south Atlantic
