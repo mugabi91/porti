@@ -145,7 +145,7 @@ elif page == "EDA":
             Dropped the useless variables
             Dropped the duplicated entries
             Renamed the long Variable names as below 
-            Did data type convertions
+            Did data type conversions
             Did some exploring after
             
              """))
@@ -260,7 +260,7 @@ elif page == "EDA":
     st.plotly_chart(fig1)
     
     st.write_stream(stream_data(''' #### INSIGHTS
-As seen above starwars has got the highest number of fans followed by star trek and last the expanded universe
+As seen above star trek has got the highest number of fans followed by star wars and last the expanded universe
 
 The fan make up by gender shows its mostly Males interested in the franchises
 
