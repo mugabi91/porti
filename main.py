@@ -251,6 +251,15 @@ Looking at the male fan base of all the franchises, starwars has the highest mal
   # Count occurrences of each location
     counts = df.groupby("Location").size().reset_index()
     counts.columns = ["Location", "count"]
+    counts_sorted = counts.sort_values(by='count', ascending=False)
+   
+    fan_location_count = df.sort_values(by="Location")
+    
+    fan_location_count = df.groupby('Location').agg(starwars_fan=('starwars_fan', 'count'), star_trek_fan=('star_trek_fan', 'count'), Expanded_universe_fan=("Expanded_universe_fan","count"), Count=('Location', 'size')).reset_index()
+    
+    
+     
+
     
     # Sort the counts DataFrame by 'count' column in ascending order
     counts_sorted = counts.sort_values(by='count', ascending=False)
@@ -264,20 +273,20 @@ Looking at the male fan base of all the franchises, starwars has the highest mal
     st.plotly_chart(fig_a)
     
     # Count plot for Star Wars fans location
-    fig_b = px.bar(df.sort_values(by="Location"), x='Location', color='starwars_fan', title='Star Wars Fans Location')
+    fig_b = px.bar(fan_location_count, x='Location', y='starwars_fan', title='Star Wars Fans Location')
     fig_b.update_layout(title_text="Star Wars Fans Location",width=1000, height=500)
     fig_b.show()
     st.plotly_chart(fig_b)
     
     # Count plot for Star Trek fans location
-    fig_c = px.bar(df.sort_values(by="Location"), x='Location', color='star_trek_fan', title='Star Trek Fans Location')
+    fig_c = px.bar(fan_location_count, x='Location', y='star_trek_fan', title='Star Trek Fans Location')
     fig_c.update_layout(title_text="Star Trek Fans Location",width=1000, height=500)
     fig_c.show()
     st.plotly_chart(fig_c)
     
     
     # Count plot for Expanded Universe fans location
-    fig_d= px.bar(df.sort_values(by="Location"), x='Location', color='Expanded_universe_fan', title='Expanded Universe Fans Location')
+    fig_d= px.bar(fan_location_count, x='Location', y='Expanded_universe_fan', title='Expanded Universe Fans Location')
     fig_d.update_layout(title_text="Expanded Universe Fans Location",width=1000, height=500)
     fig_d.show()
     st.plotly_chart(fig_d)
