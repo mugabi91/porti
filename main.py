@@ -216,7 +216,7 @@ elif page == "EDA":
                  title='Counts by Age and Fan Categories')
     
     # Update layout and show the plot
-    fig1.update_layout(xaxis_title='Age', yaxis_title='Count', legend_title='Category')
+    fig1.update_layout(xaxis_title='Age', yaxis_title='Count', legend_title='Category',width=1000, height=500)
     fig1.show()
 
 
