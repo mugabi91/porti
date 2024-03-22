@@ -304,21 +304,31 @@ Inspect the graphs  above for the rest and more insight on location of fans and 
 
     st.divider()
     st.write_stream(stream_data("### What are the income and Education levels of the FAN bases?"))
-    fig3, axes = plt.subplots(3, 2, figsize=(15, 15))
-
-    for i, (category, title) in enumerate(zip(categories, titles)):
+    categories = ['starwars_fan', 'star_trek_fan', 'Expanded_universe_fan']
+    titles = ['Levels of Star Wars fans', 'Levels of Star Trek fans', 'Levels of Expanded Universe fans']
     
-        sns.countplot(data=df, hue=category, x='Household Income', ax=axes[i, 0])
-        axes[i, 0].set_title(f'income {title}'.upper())
+    # Function to create histogram plots with filtering NaN values
+    def create_histogram_plot(category, x_column, title):
+        filtered_df = df.dropna(subset=[category, x_column])  # Drop rows with NaN in the specified category and x_column
+        if not filtered_df.empty:
+            fig = px.histogram(filtered_df, x=x_column, color=category, title=title,
+                               histfunc='count', barmode='group')
+            fig.update_layout(width=1000, height=500, margin=dict(l=20, r=20, t=70, b=20), showlegend=False)
+            return fig
+    
+    # Create side-by-side histogram plots for each category
+    for category, title in zip(categories, titles):
+        fig1 = create_histogram_plot(category, 'Household Income', f'{title} - Household Income')
+        fig2 = create_histogram_plot(category, 'Education', f'{title} - Education')
         
-        sns.countplot(data=df, hue=category, x='Education', ax=axes[i, 1])
-        axes[i, 1].set_title(f'Education  {title}'.upper())
-        axes[i, 1].tick_params(axis='x', rotation=45)
-
-
-    plt.tight_layout()
-    plt.show()
-    st.pyplot(fig3)
+        if fig1 is not None:
+            fig1.show()
+            st.plotly_chart(fig1)
+        
+        if fig2 is not None:
+            fig2.show()
+            st.plotly_chart(fig2)
+         
     
     st.write_stream(stream_data("""#### INSIGHTS
 
