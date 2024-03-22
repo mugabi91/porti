@@ -262,7 +262,7 @@ elif page == "EDA":
     st.write_stream(stream_data(''' #### INSIGHTS
 As seen above star trek has got the highest number of fans followed by star wars and last the expanded universe
 
-The fan make up by gender shows its mostly Males interested in the franchises except for startrek where the female fan base is greater than the male fan best
+The fan make up by gender shows its mostly Males interested in the franchises except for startrek where the female fan base is greater than the male fan base
 
 For starwars it has mostly a fan base of people aged 30 to 60 yrs of age
 
