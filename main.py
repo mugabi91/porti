@@ -1,4 +1,15 @@
+import subprocess
 
+# Define the command to upgrade matplotlib
+command = 'pip install --upgrade matplotlib'
+
+# Run the command using subprocess
+try:
+    subprocess.run(command, shell=True, check=True)
+    print("Matplotlib upgrade successful.")
+except subprocess.CalledProcessError as e:
+    print(f"Error upgrading Matplotlib: {e}")
+  
 ############### start of imports ################################################################################################
 import pandas as pd 
 import streamlit as st 
