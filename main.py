@@ -247,13 +247,13 @@ Looking at the male fan base of all the franchises, starwars has the highest mal
     st.divider()
     st.divider()
     st.write_stream(stream_data("### Where are most fans from ?"))
+    
     counts = df.groupby("Location").size().reset_index()
-counts.columns = ["Location", "count"]
+    counts.columns = ["Location", "count"]
 
 # Sort the counts DataFrame by 'count' column in ascending order
-counts_sorted = counts.sort_values(by='count', ascending=False)
-
-
+    counts_sorted = counts.sort_values(by='count', ascending=False)
+    
     fig2,ax =plt.subplots(4,1, figsize=(15,15))
     
     
