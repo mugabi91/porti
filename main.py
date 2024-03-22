@@ -247,20 +247,18 @@ Looking at the male fan base of all the franchises, starwars has the highest mal
     st.divider()
     st.divider()
     st.write_stream(stream_data("### Where are most fans from ?"))
-
-    counts = df['Location'].value_counts().sort_values(ascending=False)
     fig2,ax =plt.subplots(4,1, figsize=(15,15))
 
-    sns.countplot(data=counts, x="Location",ax=ax[0])
+    sns.countplot(data=df, x="Location",ax=ax[0])
     ax[0].set_title("fans location".upper())
 
-    sns.countplot(data=counts, x="Location",hue="starwars_fan",ax=ax[1])
+    sns.countplot(data=df, x="Location",hue="starwars_fan",ax=ax[1])
     ax[1].set_title("starwars fans Location".upper())
 
-    sns.countplot(data=counts, x="Location", hue="star_trek_fan",ax=ax[2])
+    sns.countplot(data=df, x="Location", hue="star_trek_fan",ax=ax[2])
     ax[2].set_title("star trek fans location".upper())
 
-    sns.countplot(data=counts, x="Location", hue="Expanded_universe_fan",ax=ax[3])
+    sns.countplot(data=df, x="Location", hue="Expanded_universe_fan",ax=ax[3])
     ax[3].set_title("Expanded universe fans location".upper())
 
     plt.tight_layout()
