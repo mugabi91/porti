@@ -274,7 +274,7 @@ Looking at the male fan base of all the franchises, starwars has the highest mal
     st.pyplot(fig2)
     
     st.write_stream(stream_data("""#### INSIGHTS
-Most fans are from the East North Central followed bythe pacific and then the north Atlantic
+Most fans are from the East North Central followed by the pacific and then the south Atlantic
 
 Inspect the graphs  above for the rest and more insight on location of fans and non fans locations
 
