@@ -267,7 +267,7 @@ Looking at the male fan base of all the franchises, starwars has the highest mal
     fig_b = px.bar(df, x='Location', color='starwars_fan', title='Star Wars Fans Location')
     fig_b.update_layout(title_text="Star Wars Fans Location")
     fig_b.show()
-    st.ploty_chart(fig_b)
+    st.plotly_chart(fig_b)
     
     # Count plot for Star Trek fans location
     fig_c = px.bar(df, x='Location', color='star_trek_fan', title='Star Trek Fans Location')
