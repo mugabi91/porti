@@ -214,7 +214,7 @@ elif page == "EDA":
                  title='Counts by Gender and Fan Categories')
     
     # Update layout and show the plot
-    fi1g.update_layout(xaxis_title='Gender', yaxis_title='Count', legend_title='Category')
+    fi1g.update_layout(xaxis_title='Gender', yaxis_title='Count', legend_title='Category',width=1000, height=500)
     fi1g.show()
     st.plotly_chart(fi1g)
  
