@@ -44,7 +44,7 @@ if page == "Home":
     st.write("# lmt data analysis portifolio" .upper())
     #BIO
     bio = """ ###### By. L Mugabi Trevor. 
-             Welcome to my portifolio.
+             Welcome to my portfolio.
              """
     st.write(bio)
     
