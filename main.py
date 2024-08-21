@@ -41,7 +41,7 @@ with st.sidebar:
 ########################### start of page content###############################################
 if page == "Home":
     #title 
-    st.write("# lmt data analysis portifolio" .upper())
+    st.write("# lmt data analysis portfolio" .upper())
     #BIO
     bio = """ ###### By. L Mugabi Trevor. 
              Welcome to my portfolio.
